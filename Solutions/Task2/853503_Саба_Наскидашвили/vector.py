@@ -1,22 +1,18 @@
 import math
 
 class Vector:
-	def __init__(self, x, size):
+	def __init__(self, x):
 		self.x = x
-		self.size = size
 
 
 	def createVector(self):
-		for i in range(self.size):
+		for i in range(len(self.x)):
 			i = int(input())
 			self.x.append(i)
 		
 			
 	def getVector(self):
-		vector = list()
-		for i in self.x:
-			vector.append(i)
-		return vector
+		return self.x
 
 	def compare(self,v1):
 		if self.x == v1.x:
@@ -24,39 +20,34 @@ class Vector:
 		else: return False	
 
 	def sumOfVectors(self,v1):
-		v2 = list()
 		a = 0
-		while a < self.size:
+		while a < len(self.x):
 			i = self.x[a] + v1.x[a]
-			v2.append(i)
 			v1.x[a] = i	
 			a += 1
 		return v1
 
 	def subOfVectors(self,v1):
-		v2 = list()
 		a = 0
-		while a < self.size:
+		while a < len(self.x):
 			i = self.x[a] - v1.x[a]
-			v2.append(i)
 			v1.x[a] = i	
 			a += 1
 		return v1
 
 	def multipy(self, a):
-		vector = list()
+
 		i = 0
-		while i < self.size:
+		while i < len(self.x):
 			v = (self.x[i] * a)
-			vector.append(v)
 			self.x[i] = v
 			i += 1 	
-		return vector
+		
 
 	def innerProduct(self,v1):
 		result = 0
 		i = 0
-		while i < self.size:
+		while i < len(self.x):
 			result += self.x[i] * v1.x[i]
 			i += 1
 		return result			
@@ -64,7 +55,7 @@ class Vector:
 	def countlen(self):
 		i = 0
 		result = 0
-		while i < self.size:
+		while i < len(self.x):
 			result += (self.x[i]**2) 
 			i += 1
 		length = math.sqrt(result)	
@@ -72,16 +63,8 @@ class Vector:
 
 if __name__ == '__main__':
 	
-	vector = list()
-	n = int(input())
-	a = 0
-	while a < n:
-		v = int(input())
-		vector.append(v)
-		a += 1
-
-	vector1 = Vector(vector,n)
-	vector2 = Vector([0,1,1],3)
+	vector1 = Vector([1,2,4])
+	vector2 = Vector([0,1,1])
 	print(vector1.getVector())
 	print(vector2.getVector())
 	print(vector1.compare(vector2))
@@ -89,6 +72,8 @@ if __name__ == '__main__':
 	print(vector1.multipy(3))
 	print(vector1.innerProduct(vector2))
 	print(vector1.countlen())
+
+
 
 
 
